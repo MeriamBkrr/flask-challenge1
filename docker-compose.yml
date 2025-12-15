@@ -1,20 +1,29 @@
 version: "3.8"
 
 services:
+  web:
+    build: .
+    container_name: flask_service
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    networks:
+      - flask_net
+
   mongodb:
     image: mongo:6.0
-    container_name: mongodb
-    restart: always
+    container_name: mongodb_service
     ports:
       - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
     networks:
-      - mongo-network
-
-volumes:
-  mongo-data:
+      - flask_net
+    volumes:
+      - mongo_data:/data/db
 
 networks:
-  mongo-network:
-    driver: bridge
+  flask_net:
+
+volumes:
+  mongo_data:
+

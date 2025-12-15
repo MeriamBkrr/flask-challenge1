@@ -7,11 +7,12 @@ WORKDIR /app
 # Copie tous les fichiers du projet
 COPY . .
 
-# Installer Flask
-RUN pip install flask
+# Installer Flask et PyMongo
+RUN pip install --no-cache-dir flask pymongo
 
-# Exposer le port 5000
+# Exposer le port 5000 pour Flask
 EXPOSE 5000
 
 # Commande pour lancer l'application
 CMD ["python", "app.py"]
+
