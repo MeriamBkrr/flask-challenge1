@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app-nodb
+  namespace: mboukraa
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-nodb
+  template:
+    metadata:
+      labels:
+        app: flask-nodb
+    spec:
+      containers:
+      - name: flask
+        image: meriambkrr/challenge4-flask-nodb:v1
+        ports:
+        - containerPort: 5000
