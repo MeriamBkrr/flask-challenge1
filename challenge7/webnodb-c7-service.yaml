@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webnodb-c7-service
+  namespace: mboukraa
+spec:
+  type: ClusterIP
+  selector:
+    app: webnodb-c7
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
