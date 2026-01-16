@@ -1,0 +1,24 @@
+serviceAccount:
+  create: true
+  name: ""
+
+webdb:
+  image: meriambkrr/challenge4-flask-nodb:v1
+  port: 5000
+
+webnodb:
+  image: meriambkrr/challenge4-flask-db:v1
+  port: 5000
+
+mongodb:
+  image: mongo:6.0
+  port: 27017
+
+httpRoute:
+  enabled: true
+  hostnames:
+    - webdb.mboukraa.net4255.luxbulb.org
+    - webnodb.mboukraa.net4255.luxbulb.org
+  rules:
+    - matches: []
+      filters: []
