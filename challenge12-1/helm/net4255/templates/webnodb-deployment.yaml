@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webnodb
+spec:
+  replicas: {{ .Values.webnodb.replicas }}
+  selector:
+    matchLabels:
+      app: webnodb
+  template:
+    metadata:
+      labels:
+        app: webnodb
+    spec:
+      containers:
+        - name: webnodb
+          image: {{ .Values.webnodb.image }}
+          ports:
+            - containerPort: {{ .Values.webnodb.port }}
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "100Mi"
+            limits:
+              cpu: "200m"
+              memory: "200Mi"

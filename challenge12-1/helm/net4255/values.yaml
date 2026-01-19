@@ -1,0 +1,20 @@
+namespace: meriam
+
+webnodb:
+  image: meriambkrr/challenge4-flask-nodb:v1
+  replicas: 1
+  port: 5000
+
+webdb:
+  image: meriambkrr/challenge4-flask-db:v1
+  replicas: 3
+  port: 5000
+
+mongodb:
+  image: mongo:6
+  port: 27017
+  replicas: 1
+
+  persistence:
+    storageClass: longhorn
+    size: 100Mi

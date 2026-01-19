@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: net4255-ingress
+spec:
+  rules:
+    - host: webnodb.meriam.net4255.luxbulb.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webnodb
+                port:
+                  number: 80
+
+    - host: webdb.meriam.net4255.luxbulb.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webdb
+                port:
+                  number: 80

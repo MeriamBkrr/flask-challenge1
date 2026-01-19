@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webnodb
+spec:
+  type: ClusterIP
+  selector:
+    app: webnodb
+  ports:
+    - port: 80
+      targetPort: 5000
