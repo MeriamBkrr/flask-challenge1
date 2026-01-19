@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webdb
+spec:
+  replicas: {{ .Values.webdb.replicas }}
+  selector:
+    matchLabels:
+      app: webdb
+  template:
+    metadata:
+      labels:
+        app: webdb
+    spec:
+      containers:
+        - name: webdb
+          image: {{ .Values.webdb.image }}
+          ports:
+            - containerPort: {{ .Values.webdb.port }}
+          env:
+            - name: WEBDB_VERSION
+              value: "{{ .Values.webdb.version }}"  
+            - name: PORT
+              value: "{{ .Values.webdb.port }}"
+

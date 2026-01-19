@@ -1,0 +1,11 @@
+webdb:
+  image: meriambkrr/challenge4-flask-db:v2
+  replicas: 2
+  port: 5000
+  version: "2.0 🚀"   
+
+webnodb:
+  image: meriambkrr/challenge4-flask-nodb:v2
+  replicas: 2
+  port: 5001
+  version: "2.0 🚀"   

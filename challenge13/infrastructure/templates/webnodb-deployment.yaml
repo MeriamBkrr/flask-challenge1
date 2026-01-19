@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webnodb
+spec:
+  replicas: {{ .Values.webnodb.replicas }}
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: webnodb
+  template:
+    metadata:
+      labels:
+        app: webnodb
+    spec:
+      containers:
+      - name: webnodb
+        image: {{ .Values.webnodb.image }}
+        ports:
+        - containerPort: 5001
